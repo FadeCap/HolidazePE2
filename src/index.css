@@ -6,6 +6,25 @@
   font-family: Poppins, system-ui, Avenir, Helvetica, Arial, sans-serif;
   padding: 0;
   margin: 0;
+  height: 100%; 
+
+}
+
+html, body {
+  height: 100%; 
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
+main {
+  flex-grow: 1; 
 }
 
 a {
@@ -13,24 +32,12 @@ a {
   color: #ffffff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #888888;
 }
 
-
-
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-}
-
-
-@media  {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #888888;
-  }
 }

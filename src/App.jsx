@@ -1,21 +1,15 @@
-import { useState } from 'react'
-import './App.css'
-import Layout from './Components/Layout'
+import Layout from "./components/Layout";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-    <div>
-        <Layout />
-    </div>
-    
-    <div>  
-      <h1>Holidaze</h1>
-    </div>
-    </>
-  )
+    <Layout>
+      {/* Your main content goes here */}
+      <div className="container mx-auto">
+        <h1 className="text-3xl font-bold">Welcome to Holidaze</h1>
+        <p>Explore the best holiday destinations!</p>
+      </div>
+    </Layout>
+  );
 }
 
-export default App
+export default App;
