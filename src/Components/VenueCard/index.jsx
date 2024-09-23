@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import StarRating from "../StarRating";
+import AmenityIcon from "../AmenityIcon";
 
 const placeholderImage =
   "https://via.placeholder.com/400x300?text=No+Image+Available";
@@ -44,16 +46,26 @@ function VenueCard({ venue }) {
       </div>
 
       {/* Rating */}
-      <p className="text-yellow-500 mt-2">Rating: {venue.rating} / 5</p>
+      <div className="mt-2">
+        <StarRating rating={venue.rating} /> {/* Use StarRating component */}
+      </div>
 
       {/* Amenities */}
       <div className="mt-4">
         <p className="font-medium">Amenities:</p>
         <ul className="list-disc list-inside">
-          <li>Wifi: {venue.meta.wifi ? "Yes" : "No"}</li>
-          <li>Parking: {venue.meta.parking ? "Yes" : "No"}</li>
-          <li>Pets Allowed: {venue.meta.pets ? "Yes" : "No"}</li>
-          <li>Breakfast: {venue.meta.breakfast ? "Yes" : "No"}</li>
+          <li>
+            Wifi: <AmenityIcon available={venue.meta.wifi} /> {/* Use AmenityIcon */}
+          </li>
+          <li>
+            Parking: <AmenityIcon available={venue.meta.parking} />
+          </li>
+          <li>
+            Pets Allowed: <AmenityIcon available={venue.meta.pets} />
+          </li>
+          <li>
+            Breakfast: <AmenityIcon available={venue.meta.breakfast} />
+          </li>
         </ul>
       </div>
 

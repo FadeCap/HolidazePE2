@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import VenueCard from  '../../Components/UI/VenueCard';
+import VenueCard from  '../../Components/VenueCard';
 import useFetchVenues from '../../hooks/useFetchVenues';
 import SearchBar from '../../Components/SearchBar';
 
@@ -26,9 +26,6 @@ function HomePage() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4">Available Venues</h1>
-      
-      {/* SearchBar Component */}
       <SearchBar onSearch={handleSearch} />
 
       {/* Venues Grid */}
