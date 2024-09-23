@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 function Header() {
   return (
-    <nav className="bg-gray-600 p-4">
+    <nav className="bg-gray-600 p-8">
       <div className="container mx-auto flex justify-between items-center">
         <Link to="/" className="text-white font-bold text-xl">
           Holidaze
@@ -15,7 +15,7 @@ function Header() {
             Profile
           </Link>
           <Link to="/auth" className="text-white hover:text-gray-200">
-            Login
+            Login/Register
           </Link>
         </div>
       </div>

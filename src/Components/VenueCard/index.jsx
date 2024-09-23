@@ -17,14 +17,14 @@ function VenueCard({ venue }) {
         <img
           src={venue.media[0].url}
           alt={venue.media[0].alt || "Venue image"}
-          onError={handleImageError} // Fallback to placeholder if image fails to load
+          onError={handleImageError}
           className="w-full h-48 object-cover rounded-lg"
         />
       ) : (
         <img
           src={placeholderImage}
           alt="Placeholder image"
-          className="w-full h-48 object-cover rounded-lg"
+          className="w-full h-48 object-cover rounded-lg p-0 m-0"
         />
       )}
 
@@ -74,7 +74,7 @@ function VenueCard({ venue }) {
         to={`/venue/${venue.id}`}
         className="text-blue-500 hover:underline mt-auto text-center"
       >
-        View Details
+        <button className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">View Details</button>
       </Link>
     </div>
   );
