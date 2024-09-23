@@ -10,7 +10,7 @@ function RoutesComponent() {
   return (
     <Router>
       <div className="App">
-        
+        <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/auth" element={<AuthPage />} />
@@ -27,7 +27,7 @@ function RoutesComponent() {
             }
           />
         </Routes>
-        <Layout />
+        </Layout>
       </div>
     </Router>
   );
