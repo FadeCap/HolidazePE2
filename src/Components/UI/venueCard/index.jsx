@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 
-// Placeholder image URL
 const placeholderImage =
   "https://via.placeholder.com/400x300?text=No+Image+Available";
 
@@ -10,7 +9,7 @@ function VenueCard({ venue }) {
   };
 
   return (
-    <div className="border rounded-lg p-4 shadow-lg">
+    <div className="border rounded-lg p-4 shadow-lg flex flex-col">
       {/* Venue Image */}
       {venue.media && venue.media[0] ? (
         <img
@@ -58,10 +57,10 @@ function VenueCard({ venue }) {
         </ul>
       </div>
 
-      {/* View Details Link */}
+      {/* View Details Link at the bottom */}
       <Link
         to={`/venue/${venue.id}`}
-        className="text-blue-500 hover:underline mt-4 block"
+        className="text-blue-500 hover:underline mt-auto text-center"
       >
         View Details
       </Link>

@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 
 function Header() {
   return (
-    <nav className="bg-blue-600 p-4">
+    <nav className="bg-gray-600 p-4">
       <div className="container mx-auto flex justify-between items-center">
         <Link to="/" className="text-white font-bold text-xl">
-          BookingSite
+          Holidaze
         </Link>
         <div className="space-x-4">
           <Link to="/contact" className="text-white hover:text-gray-200">
