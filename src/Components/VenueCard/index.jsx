@@ -47,7 +47,7 @@ function VenueCard({ venue }) {
 
       {/* Rating */}
       <div className="mt-2">
-        <StarRating rating={venue.rating} /> {/* Use StarRating component */}
+        <StarRating maxRating={5} rating={venue.rating} /> {/* Use StarRating component */}
       </div>
 
       {/* Amenities */}

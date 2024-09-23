@@ -62,7 +62,7 @@ function SpecificVenuePage() {
           {/* Rating */}
           <div className="flex items-center">
             <span className="text-gray-500 mr-2">Rating:</span>
-            <StarRating rating={venue.rating} />
+            <StarRating maxRating={5} rating={venue.rating} />
           </div>
 
           <p className="text-gray-500">Bookings: {venue._count.bookings}</p>

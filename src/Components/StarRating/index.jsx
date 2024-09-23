@@ -1,4 +1,4 @@
-export default function StarRating({ rating, maxRating = 5 }) {
+export default function StarRating({ rating, maxRating }) {
     const stars = [];
     for (let i = 1; i <= maxRating; i++) {
       stars.push(
