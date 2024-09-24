@@ -17,7 +17,7 @@ function RoutesComponent() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/venue/:id" element={<SpecificVenuePage />} />
-          {/* Fallback route for 404 - Not Found */}
+          {/* Fallback route if no page is found */}
           <Route
             path="*"
             element={
