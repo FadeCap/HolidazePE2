@@ -45,7 +45,7 @@ function Header() {
             Profile
           </Link>
           <Link to="/auth" className="text-white hover:text-gray-200">
-            Login/Register
+            Log in
           </Link>
         </div>
       </div>
@@ -72,7 +72,7 @@ function Header() {
             className="text-white hover:text-gray-200"
             onClick={toggleMenu}
           >
-            Sign-up/in
+            Log in
           </Link>
         </div>
       )}
