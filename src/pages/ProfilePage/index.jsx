@@ -51,7 +51,7 @@ function ProfilePage() {
     <div className="container mx-auto p-0 border shadow-lg border-gray-300 rounded-lg mt-8">
     <div className="relative overflow-hidden">
       <div
-        className="bg-cover bg-center h-48 rounded-t-lg"
+        className="bg-cover bg-center h-64 rounded-t-lg"
         style={{ backgroundImage: `url(${user.banner.url})` }}
       />
       <img
@@ -61,7 +61,7 @@ function ProfilePage() {
       />
     </div>
   
-    <div className="flex justify-between items-center mt-4 p-4">
+    <div className="flex justify-between items-center ml-4 mt-4 p-4">
       <h1 className="text-2xl font-bold truncate max-w-[70%]"> {/* Add truncate and max-width */}
         {user.name}
       </h1>

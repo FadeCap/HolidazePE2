@@ -72,7 +72,7 @@ function Header() {
             className="text-white hover:text-gray-200"
             onClick={toggleMenu}
           >
-            Login/Register
+            Sign-up/in
           </Link>
         </div>
       )}

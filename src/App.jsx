@@ -1,18 +1,11 @@
-import Layout from "./components/Layout";
-import Venues from "./Components/API/Venues";
+// src/main.jsx
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import RoutesComponent from './Components/RoutesComponent';
+import './index.css';
 
-
-function App() {
-  return (
-    <Layout>
-      
-      {/* Your main content goes here */}
-      <div className="container mx-auto">
-        <h1 className="text-3xl font-bold">Welcome to Holidaze</h1>
-        <p>Explore the best holiday destinations!</p>
-      </div>
-    </Layout>
-  );
-}
-
-export default App;
+createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <RoutesComponent />
+  </React.StrictMode>,
+);
