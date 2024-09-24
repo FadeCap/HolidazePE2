@@ -38,14 +38,14 @@ function Header() {
 
         {/* Menu Links Desktop */}
         <div className="hidden lg:flex space-x-4">
-          <Link to="/contact" className="text-white hover:text-gray-200">
-            Contact
+          <Link to="/auth" className="text-white hover:text-gray-200">
+            Log in
           </Link>
           <Link to="/profile" className="text-white hover:text-gray-200">
             Profile
           </Link>
-          <Link to="/auth" className="text-white hover:text-gray-200">
-            Log in
+          <Link to="/contact" className="text-white hover:text-gray-200">
+            Contact
           </Link>
         </div>
       </div>
@@ -54,11 +54,11 @@ function Header() {
       {isOpen && (
         <div className="lg:hidden flex flex-col space-y-2 p-4 items-end">
           <Link
-            to="/contact"
+            to="/auth"
             className="text-white hover:text-gray-200"
             onClick={toggleMenu}
           >
-            Contact
+            Log in
           </Link>
           <Link
             to="/profile"
@@ -68,11 +68,11 @@ function Header() {
             Profile
           </Link>
           <Link
-            to="/auth"
+            to="/contact"
             className="text-white hover:text-gray-200"
             onClick={toggleMenu}
           >
-            Log in
+            Contact
           </Link>
         </div>
       )}
