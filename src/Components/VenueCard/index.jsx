@@ -1,11 +1,17 @@
 import { Link } from "react-router-dom";
 import StarRating from "../StarRating";
-import AmenityIcon from "../AmenityIcon";
+import AmenitiesList from "../../Components/Amenities/AmenityList";
 
 const placeholderImage =
   "https://via.placeholder.com/400x300?text=No+Image+Available";
 
 function VenueCard({ venue }) {
+  const venueAmenities = [
+    { name: "WiFi", available: venue.meta.wifi },
+    { name: "Parking", available: venue.meta.parking },
+    { name: "Pets Allowed", available: venue.meta.pets },
+    { name: "Breakfast", available: venue.meta.breakfast },
+  ];
   const handleImageError = (e) => {
     e.target.src = placeholderImage;
   };
@@ -35,31 +41,13 @@ function VenueCard({ venue }) {
       <p className="text-gray-600 pl-4">
         {venue.location.city} {venue.location.country}
       </p>
-
-      {/* Amenities */}
-      <div className="p-4">
-        <ul className="flex flex-wrap space-x-1 list-none justify-center">
-          <li>
-            <AmenityIcon available={venue.meta.wifi} name="WiFi" />
-          </li>
-          <li>
-            <AmenityIcon available={venue.meta.parking} name="Parking" />
-          </li>
-          <li>
-            <AmenityIcon available={venue.meta.pets} name="Pets Allowed" />
-          </li>
-          <li>
-            <AmenityIcon available={venue.meta.breakfast} name="Breakfast" />
-          </li>
-        </ul>
-      </div>
+      {/* Venue Amenities */}
+      <AmenitiesList amenities={venueAmenities} />
 
       {/* Rating */}
       <div className="pl-4">
         <StarRating maxRating={5} rating={venue.rating} />{" "}
       </div>
-
-      
 
       {/* Price and Max Guests */}
       <div className="mt-4 flex justify-between items-center m-4">

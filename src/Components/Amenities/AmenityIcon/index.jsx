@@ -1,6 +1,3 @@
-// src/components/AmenityIcon.jsx
-import React from 'react';
-
 export default function AmenityIcon({ available, name }) {
   return (
     <span

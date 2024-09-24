@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import StarRating from '../../Components/StarRating';
-import AmenityIcon from '../../Components/AmenityIcon';
+import AmenitiesList from '../../Components/Amenities/AmenityList';
 import Carousel from '../../Components/Carousel';
 
 function SpecificVenuePage() {
@@ -35,6 +35,14 @@ function SpecificVenuePage() {
     return <div className="text-center mt-10">Venue not found.</div>;
   }
 
+  // Prepare the amenities array after the venue has been fetched
+  const venueAmenities = [
+    { name: 'WiFi', available: venue.meta.wifi },
+    { name: 'Parking', available: venue.meta.parking },
+    { name: 'Pets Allowed', available: venue.meta.pets },
+    { name: 'Breakfast', available: venue.meta.breakfast },
+  ];
+
   return (
     <div className="container mx-auto p-4">
       {/* Image Carousel */}
@@ -46,8 +54,15 @@ function SpecificVenuePage() {
       {/* Venue Location */}
       <p className="text-xl text-gray-600 mb-4">
         {venue.location.address ? `${venue.location.address}, ` : ''}
-        {venue.location.city}, {venue.location.country}
+        {venue.location.city} {venue.location.country}
       </p>
+
+       {/* Amenities */}
+    <div className="mt-4">
+      <div className="flex flex-wrap">
+        <AmenitiesList amenities={venueAmenities} />
+      </div>
+    </div>
 
       {/* Venue Description */}
       <p className="mb-6 text-lg">{venue.description}</p>
@@ -66,17 +81,6 @@ function SpecificVenuePage() {
           </div>
 
           <p className="text-gray-500">Bookings: {venue._count.bookings}</p>
-        </div>
-
-        {/* Amenities */}
-        <div>
-          <p className="font-medium text-lg mb-2">Amenities:</p>
-          <ul className="list-disc list-inside">
-            <li>Wifi: <AmenityIcon available={venue.meta.wifi} /></li>
-            <li>Parking: <AmenityIcon available={venue.meta.parking} /></li>
-            <li>Pets Allowed: <AmenityIcon available={venue.meta.pets} /></li>
-            <li>Breakfast: <AmenityIcon available={venue.meta.breakfast} /></li>
-          </ul>
         </div>
       </div>
 
