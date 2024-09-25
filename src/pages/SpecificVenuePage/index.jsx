@@ -4,8 +4,8 @@ import VenueCarousel from '../../Components/VenueComponents/VenueCarousel';
 import VenueDetails from '../../Components/VenueComponents/VenueDetails';
 import VenueLocation from '../../Components/VenueComponents/VenueLocation';
 import VenueDates from '../../Components/VenueComponents/VenueDates';
-import 'react-calendar/dist/Calendar.css';
 import BookingForm from '../../Components/VenueComponents/BookingForm';
+import 'react-calendar/dist/Calendar.css';
 
 function SpecificVenuePage() {
   const { id } = useParams();
