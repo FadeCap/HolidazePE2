@@ -14,13 +14,6 @@ function VenueDetails({ venue }) {
 
         <p className="text-gray-500">Bookings: {venue._count.bookings}</p>
       </div>
-
-      {/* Booking Button */}
-      <div className="mt-8">
-        <button className="bg-blue-600 text-white py-2 px-6 rounded hover:bg-blue-700">
-          Book Now
-        </button>
-      </div>
     </div>
   );
 }

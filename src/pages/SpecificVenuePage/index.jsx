@@ -3,9 +3,9 @@ import { useParams } from 'react-router-dom';
 import VenueCarousel from '../../Components/VenueComponents/VenueCarousel';
 import VenueDetails from '../../Components/VenueComponents/VenueDetails';
 import VenueLocation from '../../Components/VenueComponents/VenueLocation';
-import VenueCalendar from '../../Components/VenueComponents/VenueCalendar';
 import VenueDates from '../../Components/VenueComponents/VenueDates';
 import 'react-calendar/dist/Calendar.css';
+import BookingForm from '../../Components/VenueComponents/BookingForm';
 
 function SpecificVenuePage() {
   const { id } = useParams();
@@ -50,23 +50,31 @@ function SpecificVenuePage() {
       {/* Image Carousel */}
       <VenueCarousel images={venue.media} />
 
-      {/* Venue Name */}
-      <h1 className="text-4xl font-bold mb-4">{venue.name}</h1>
+      <div className="flex flex-col md:flex-row">
+        <div className="flex-1 md:mr-4">
+          {/* Venue Name */}
+          <h1 className="text-4xl font-bold mb-4">{venue.name}</h1>
 
-      {/* Venue Location */}
-      <VenueLocation location={venue.location} />
+          {/* Venue Location */}
+          <VenueLocation location={venue.location} />
 
-      {/* Calendar for available dates */}
-      <VenueCalendar bookedDates={bookedDates} />
+          {/* Venue Description */}
+          <p className="mb-6 text-lg">{venue.description}</p>
 
-      {/* Venue Description */}
-      <p className="mb-6 text-lg">{venue.description}</p>
+          {/* Venue Details */}
+          <VenueDetails venue={venue} />
 
-      {/* Venue Details */}
-      <VenueDetails venue={venue} />
+          {/* Created & Updated Dates */}
+          <VenueDates created={venue.created} updated={venue.updated} />
+        </div>
 
-      {/* Created & Updated Dates */}
-      <VenueDates created={venue.created} updated={venue.updated} />
+        <div className="w-full md:w-1/3 mb-4 border-lg p-4">
+          <div className="bg-white shadow-md rounded-lg p-4">
+            <h2 className="text-xl font-semibold mb-4">Book Now</h2>
+            <BookingForm venueId={venue.id} maxGuests={venue.maxGuests} bookedDates={bookedDates} />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
