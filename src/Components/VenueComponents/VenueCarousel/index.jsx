@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import LeftArrow from '../../assets/LeftArrow.svg';
-import RightArrow from '../../assets/RightArrow.svg';
+import LeftArrow from '../../../assets/LeftArrow.svg';
+import RightArrow from '../../../assets/RightArrow.svg';
 
 function Carousel({ images }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

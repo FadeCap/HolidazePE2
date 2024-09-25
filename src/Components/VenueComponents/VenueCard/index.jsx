@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import StarRating from "../StarRating";
-import AmenitiesList from "../../Components/Amenities/AmenityList";
+import AmenitiesList from "../Amenities/AmenityList";
 
 const placeholderImage =
   "https://via.placeholder.com/400x300?text=No+Image+Available";

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import VenueCard from  '../../Components/VenueCard';
+import VenueCard from  '../../Components/VenueComponents/VenueCard';
 import useFetchVenues from '../../hooks/useFetchVenues';
 import SearchBar from '../../Components/SearchBar';
 
