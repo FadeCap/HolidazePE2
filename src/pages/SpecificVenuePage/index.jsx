@@ -4,6 +4,7 @@ import VenueCarousel from '../../Components/VenueComponents/VenueCarousel';
 import VenueDetails from '../../Components/VenueComponents/VenueDetails';
 import VenueLocation from '../../Components/VenueComponents/VenueLocation';
 import VenueDates from '../../Components/VenueComponents/VenueDates';
+import AmenitiesList from '../../Components/VenueComponents/Amenities/AmenityList';
 import BookingForm from '../../Components/VenueComponents/BookingForm';
 import 'react-calendar/dist/Calendar.css';
 
@@ -24,7 +25,6 @@ function SpecificVenuePage() {
       .then((data) => {
         setVenue(data.data);
         setLoading(false);
-
         const dates = data.data.bookings.map((booking) => ({
           start: new Date(booking.dateFrom),
           end: new Date(booking.dateTo),
@@ -45,6 +45,12 @@ function SpecificVenuePage() {
     return <div className="text-center mt-10">Venue not found.</div>;
   }
 
+  // Transform meta object into an array for AmenitiesList
+  const amenities = Object.keys(venue.meta).map((key) => ({
+    name: key,
+    available: venue.meta[key],
+  }));
+
   return (
     <div className="container mx-auto p-4">
       {/* Image Carousel */}
@@ -57,6 +63,9 @@ function SpecificVenuePage() {
 
           {/* Venue Location */}
           <VenueLocation location={venue.location} />
+
+          {/* Venue Amenities */}
+          <AmenitiesList amenities={amenities} /> {/* Pass transformed amenities */}
 
           {/* Venue Description */}
           <p className="mb-6 text-lg">{venue.description}</p>
