@@ -65,7 +65,7 @@ function SpecificVenuePage() {
           <VenueLocation location={venue.location} />
 
           {/* Venue Amenities */}
-          <AmenitiesList amenities={amenities} /> {/* Pass transformed amenities */}
+          <AmenitiesList amenities={amenities} />
 
           {/* Venue Description */}
           <p className="mb-6 text-lg">{venue.description}</p>

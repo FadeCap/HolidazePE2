@@ -113,6 +113,7 @@ function ProfilePage() {
             <AddVenue isOpen={isAddVenueOpen} onClose={toggleAddVenueModal} />
           </div>
         )}
+
       </div>
     
       </div>
