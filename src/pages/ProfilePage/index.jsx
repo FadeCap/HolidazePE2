@@ -17,13 +17,13 @@ function ProfilePage() {
   }, []);
 
   const handleUpdate = async (updatedData) => {
-    const accessToken = localStorage.getItem('accessToken');
-  
+    const accessToken = localStorage.getItem("accessToken");
+
     if (!accessToken) {
       alert("You need to log in again.");
       return;
     }
-  
+
     try {
       const response = await axios.put(
         `https://v2.api.noroff.dev/holidaze/profiles/${user.name}`,
@@ -35,7 +35,7 @@ function ProfilePage() {
           },
         }
       );
-  
+
       const updatedUserData = response.data.data;
       localStorage.setItem("user", JSON.stringify(updatedUserData));
       setUser(updatedUserData);
@@ -61,33 +61,32 @@ function ProfilePage() {
           className="w-24 h-24 rounded-full border-4 border-white absolute bottom-2 left-2"
         />
       </div>
-  
+
       <div className="flex justify-between items-center ml-4 mt-4 p-4">
-        <h1 className="text-2xl font-bold truncate max-w-[70%]">
-          {user.name}
-        </h1>
+        <h1 className="text-2xl font-bold truncate max-w-[70%]">{user.name}</h1>
         <div>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="bg-blue-600 text-white py-2 px-4 rounded mr-2"
+            className="bg-gray-600 text-white py-2 px-4 rounded mr-2"
           >
-            Profile Settings
+            Settings
           </button>
           <LogoutButton />
         </div>
       </div>
-  
+
       <p className="text-gray-600 m-4 pl-4 pb-4">{user.bio}</p>
-  
+
       <ProfileModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         userData={user}
         onUpdate={handleUpdate}
       />
-
-      {/* Add the UserBookings component */}
-      <UserBookings username={user.name} />
+      <div>
+        {/* Add the UserBookings component */}
+        <UserBookings username={user.name} />
+      </div>
     </div>
   );
 }

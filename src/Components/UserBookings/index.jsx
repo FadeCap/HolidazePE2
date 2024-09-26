@@ -62,7 +62,10 @@ const UserBookings = ({ username }) => {
 
               {/* Booking Details */}
               <div>
-                <p className="font-bold"> {booking.venue?.name || "Unknown Venue"}</p>
+                <p className="font-bold">
+                  {" "}
+                  {booking.venue?.name || "Unknown Venue"}
+                </p>
                 <p className="mt-2">
                   Your stay is booked from{" "}
                   <span className="underline">
