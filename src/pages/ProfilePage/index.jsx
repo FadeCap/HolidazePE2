@@ -1,31 +1,22 @@
 // src/pages/ProfilePage.jsx
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import ProfileModal from "../../Components/ProfileModal";
-import UserBookings from "../../Components/UserBookings"; // Import the UserBookings component
+import UserBookings from "../../Components/UserBookings";
 import axios from "axios";
 import LogoutButton from "../../Components/LogoutButton";
-import VenueManagerActions from "../../Components/VenueManagerActions";
-import AddVenue from "../../Components/VenueManagerActions/AddVenue";
-
 
 const apiKey = import.meta.env.VITE_API_KEY;
 
 function ProfilePage() {
   const [user, setUser] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("user"));
     setUser(userData);
   }, []);
-
-  // State to control the visibility of the AddVenue modal
-  const [isAddVenueOpen, setAddVenueOpen] = useState(false);
-
-  // Function to toggle the modal
-  const toggleAddVenueModal = () => {
-    setAddVenueOpen((prev) => !prev);
-  };
 
   const handleUpdate = async (updatedData) => {
     const accessToken = localStorage.getItem("accessToken");
@@ -57,6 +48,10 @@ function ProfilePage() {
     }
   };
 
+  const handleManageVenues = () => {
+    navigate("/venue-manager"); // Navigate to the VenueManagerPage
+  };
+
   if (!user) return <div>Loading...</div>;
 
   return (
@@ -82,6 +77,16 @@ function ProfilePage() {
           >
             Settings
           </button>
+          {user.venueManager && (
+            <button
+              onClick={handleManageVenues}
+              className="bg-green-500 text-white py-2 px-4 rounded mb-4"
+            >
+              Manage Your Venues
+            </button>
+          )}
+        </div>
+        <div>
           <LogoutButton />
         </div>
       </div>
@@ -94,28 +99,12 @@ function ProfilePage() {
         userData={user}
         onUpdate={handleUpdate}
       />
+
       <div className="flex p-4">
-       <div className="w-1/3">
-        <UserBookings username={user.name} />
-       </div>
+        <div className="w-1/3">
+          <UserBookings username={user.name} />
+        </div>
 
-       <div className="w-2/3">
-        <VenueManagerActions user={user} />
-        {user.venueManager && (
-          <div>
-            <button
-              onClick={toggleAddVenueModal}
-              className="bg-blue-600 text-white py-2 px-4 rounded mb-4"
-            >
-              Add Venue
-            </button>
-            {/* Pass the isOpen and onClose props to the AddVenue component */}
-            <AddVenue isOpen={isAddVenueOpen} onClose={toggleAddVenueModal} />
-          </div>
-        )}
-
-      </div>
-    
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ function LogoutButton() {
   const handleLogout = () => {
     localStorage.removeItem("user"); // Clear user data
     localStorage.removeItem("accessToken"); // Clear access token
-    navigate("/login"); // Redirect to login page
+    navigate("/auth"); // Redirect to login page
   };
 
   return (
