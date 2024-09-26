@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import ProfileModal from "../../Components/ProfileModal";
 import UserBookings from "../../Components/UserBookings"; // Import the UserBookings component
 import axios from "axios";
+import LogoutButton from "../../Components/LogoutButton";
 
 const apiKey = import.meta.env.VITE_API_KEY;
 
@@ -65,12 +66,15 @@ function ProfilePage() {
         <h1 className="text-2xl font-bold truncate max-w-[70%]">
           {user.name}
         </h1>
-        <button
-          onClick={() => setIsModalOpen(true)}
-          className="bg-blue-600 text-white py-2 px-4 rounded"
-        >
-          Profile Settings
-        </button>
+        <div>
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="bg-blue-600 text-white py-2 px-4 rounded mr-2"
+          >
+            Profile Settings
+          </button>
+          <LogoutButton />
+        </div>
       </div>
   
       <p className="text-gray-600 m-4 pl-4 pb-4">{user.bio}</p>

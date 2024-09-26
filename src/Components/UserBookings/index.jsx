@@ -1,4 +1,3 @@
-// src/Components/UserBookings.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -46,17 +45,37 @@ const UserBookings = ({ username }) => {
   if (error) return <div>{error}</div>;
 
   return (
-    <div>
+    <div className="p-4 m-4 width-1/2">
       <h2 className="text-xl font-bold mb-2">My Bookings</h2>
       {bookings.length > 0 ? (
         <ul>
           {bookings.map((booking) => (
-            <li key={booking.id} className="border-b py-2">
-              <p>
-                Venue Name: {booking.venue?.name || "Unknown Venue"}<br />
-                Dates: {new Date(booking.dateFrom).toLocaleDateString()} - {new Date(booking.dateTo).toLocaleDateString()}<br />
-                Guests: {booking.guests}
-              </p>
+            <li key={booking.id} className="border-b py-4 flex items-center">
+              {/* Venue Image */}
+              {booking.venue?.media[0]?.url && (
+                <img
+                  src={booking.venue.media[0].url}
+                  alt={booking.venue.media[0].alt || "Venue Image"}
+                  className="w-24 h-24 object-cover rounded mr-4"
+                />
+              )}
+
+              {/* Booking Details */}
+              <div>
+                <p className="font-bold"> {booking.venue?.name || "Unknown Venue"}</p>
+                <p className="mt-2">
+                  Your stay is booked from{" "}
+                  <span className="underline">
+                    {new Date(booking.dateFrom).toLocaleDateString()}
+                  </span>{" "}
+                  to{" "}
+                  <span className="underline">
+                    {new Date(booking.dateTo).toLocaleDateString()}
+                  </span>
+                  .
+                </p>
+                <p className="mt-2">Guests: {booking.guests}</p>
+              </div>
             </li>
           ))}
         </ul>
