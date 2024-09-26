@@ -1,20 +1,14 @@
-const VenueManagerActions = ({ user }) => {
-  if (!user || !user.venueManager) {
-    return null;
-  }
+// src/Components/VenueManagerActions/index.jsx
+import React from "react";
+import ManageVenue from "./ManageVenue"; // Import your ManageVenue component
+import VenueBookings from "./VenueBookings"; // Import your VenueBookings component
 
+const VenueManagerActions = ({ user }) => {
   return (
-    <div className="mt-8 pl-4 pb-4">
-      <h2 className="text-xl font-bold">Venue Manager Actions</h2>
-      <button className="bg-green-500 text-white py-2 px-4 rounded mt-2">
-        Add Venue
-      </button>
-      <button className="bg-yellow-500 text-white py-2 px-4 rounded mt-2 ml-2">
-        Manage Venue
-      </button>
-      <button className="bg-red-500 text-white py-2 px-4 rounded mt-2 ml-2">
-        Venue Bookings
-      </button>
+    <div className="mt-4">
+      <h2 className="text-xl font-bold mb-2">Your Venue Actions</h2>
+      <ManageVenue user={user} />
+      <VenueBookings user={user} />
     </div>
   );
 };

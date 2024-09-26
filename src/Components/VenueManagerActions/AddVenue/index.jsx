@@ -1,6 +1,5 @@
-// src/Components/AddVenue.jsx
-import React, { useState } from "react";
 import axios from "axios";
+import { useState } from "react";
 
 const apiKey = import.meta.env.VITE_API_KEY;
 
@@ -12,7 +11,7 @@ const AddVenue = ({ isOpen, onClose }) => {
     maxGuests: 0,
     rating: 0,
     mediaUrl: "",
-    amenities: {
+    meta: {
       wifi: false,
       parking: false,
       breakfast: false,
@@ -26,11 +25,12 @@ const AddVenue = ({ isOpen, onClose }) => {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    if (name.startsWith("amenities.")) {
+
+    if (name.startsWith("meta.")) {
       const amenity = name.split(".")[1];
       setVenueData((prev) => ({
         ...prev,
-        amenities: { ...prev.amenities, [amenity]: checked },
+        meta: { ...prev.meta, [amenity]: checked },
       }));
     } else if (name.startsWith("location.")) {
       const locField = name.split(".")[1];
@@ -54,8 +54,22 @@ const AddVenue = ({ isOpen, onClose }) => {
       const response = await axios.post(
         "https://v2.api.noroff.dev/holidaze/venues",
         {
-          ...venueData,
+          name: venueData.name,
+          description: venueData.description,
           media: [{ url: venueData.mediaUrl, alt: "Venue Image" }],
+          price: venueData.price,
+          maxGuests: venueData.maxGuests,
+          rating: venueData.rating,
+          meta: {
+            wifi: venueData.meta.wifi,
+            parking: venueData.meta.parking,
+            breakfast: venueData.meta.breakfast,
+            pets: venueData.meta.pets,
+          },
+          location: {
+            country: venueData.location.country,
+            city: venueData.location.city,
+          },
         },
         {
           headers: {
@@ -65,7 +79,7 @@ const AddVenue = ({ isOpen, onClose }) => {
         }
       );
       alert("Venue added successfully!");
-      onClose(); // Close the modal after successful submission
+      onClose();
     } catch (error) {
       console.error("Error adding venue:", error);
       alert("Failed to add venue. Please try again.");
@@ -150,12 +164,14 @@ const AddVenue = ({ isOpen, onClose }) => {
               <div key={amenity} className="flex items-center">
                 <input
                   type="checkbox"
-                  name={`amenities.${amenity}`}
-                  checked={venueData.amenities[amenity]}
+                  name={`meta.${amenity}`}
+                  checked={venueData.meta[amenity]}
                   onChange={handleChange}
                   className="mr-2"
                 />
-                <label>{amenity.charAt(0).toUpperCase() + amenity.slice(1)}</label>
+                <label>
+                  {amenity.charAt(0).toUpperCase() + amenity.slice(1)}
+                </label>
               </div>
             ))}
           </div>
