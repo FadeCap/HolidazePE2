@@ -53,7 +53,7 @@ const UserBookings = ({ username }) => {
           {bookings.map((booking) => (
             <li key={booking.id} className="border-b py-2">
               <p>
-                Venue Name: {booking.venue?.name || "Unknown Venue"}<br /> {/* Display venue name */}
+                Venue Name: {booking.venue?.name || "Unknown Venue"}<br />
                 Dates: {new Date(booking.dateFrom).toLocaleDateString()} - {new Date(booking.dateTo).toLocaleDateString()}<br />
                 Guests: {booking.guests}
               </p>
