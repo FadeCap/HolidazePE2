@@ -100,6 +100,27 @@ const VenueOwnerList = () => {
                   <p>No image available for this venue.</p>
                 )}
               </div>
+
+              {/* Show bookings for this venue */}
+              {venue.bookings && venue.bookings.length > 0 ? (
+                <div className="mt-4 w-1/3">
+                  <h4 className="font-semibold">Bookings:</h4>
+                  {venue.bookings.map((booking) => (
+                    <div key={booking.id} className="border-t mt-2 pt-2">
+                      <p>Guests: {booking.guests}</p>
+                      <p>Customer: {booking.customer.name} </p>
+                      <p>Email: {booking.customer.email}</p>
+                      <p>
+                        Dates: {new Date(booking.dateFrom).toLocaleDateString()}{" "}
+                        to {new Date(booking.dateTo).toLocaleDateString()}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p>No bookings available for this venue.</p>
+              )}
+
               <div className="flex flex-col gap-4">
                 {/* Update Venue Button */}
                 <button
@@ -117,25 +138,6 @@ const VenueOwnerList = () => {
                   Delete
                 </button>
               </div>
-
-              {/* Show bookings for this venue */}
-              {venue.bookings && venue.bookings.length > 0 ? (
-                <div className="mt-4 w-1/3">
-                  <h4 className="font-semibold">Bookings:</h4>
-                  {venue.bookings.map((booking) => (
-                    <div key={booking.id} className="border-t mt-2 pt-2">
-                      <p>Guests: {booking.guests}</p>
-                      <p>Customer: {booking.customer.name} <p/>
-                      <p>Email: {booking.customer.email}</p>
-                        Dates: {new Date(booking.dateFrom).toLocaleDateString()}{" "}
-                        to {new Date(booking.dateTo).toLocaleDateString()}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p>No bookings available for this venue.</p>
-              )}
             </li>
           ))}
         </ul>

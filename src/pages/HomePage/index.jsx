@@ -7,10 +7,22 @@ function HomePage() {
   const { venues, loading, error } = useFetchVenues();
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Filter venues by the search query
-  const filteredVenues = venues.filter((venue) =>
-    venue.name.toLowerCase().includes(searchQuery.toLowerCase())
+  // Remove duplicate venues using a Map for efficiency
+  const uniqueVenues = Array.from(
+    new Map(venues.map((venue) => [venue.id, venue])).values()
   );
+
+  // Filter venues by the search query (name, description, or location)
+  const filteredVenues = uniqueVenues.filter((venue) => {
+    const query = searchQuery.toLowerCase();
+    const nameMatch = venue.name.toLowerCase().includes(query);
+    const descriptionMatch = venue.description.toLowerCase().includes(query);
+    const locationMatch =
+      venue.location.city?.toLowerCase().includes(query) ||
+      venue.location.country?.toLowerCase().includes(query);
+
+    return nameMatch || descriptionMatch || locationMatch;
+  });
 
   const handleSearch = (query) => {
     setSearchQuery(query);
