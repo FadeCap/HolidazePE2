@@ -1,4 +1,4 @@
-import AmenityIcon from '../AmenityIcon';
+import AmenityIcon from "../AmenityIcon";
 
 export default function AmenitiesList({ amenities }) {
   return (

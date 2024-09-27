@@ -23,7 +23,6 @@ const VenueManagerPage = ({ user }) => {
       {/* Show AddVenue modal */}
       <AddVenue isOpen={isAddVenueOpen} onClose={toggleAddVenueModal} />
 
-     
       <VenueOwnerList />
     </div>
   );

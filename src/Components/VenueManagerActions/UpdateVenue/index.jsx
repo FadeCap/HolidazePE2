@@ -143,7 +143,10 @@ const UpdateVenue = ({ venue, onClose, onUpdate }) => {
               className="border rounded w-full px-2 py-1"
             />
           </div>
-          <button type="submit" className="bg-blue-600 text-white py-1 px-4 rounded">
+          <button
+            type="submit"
+            className="bg-blue-600 text-white py-1 px-4 rounded"
+          >
             Update Venue
           </button>
           <button

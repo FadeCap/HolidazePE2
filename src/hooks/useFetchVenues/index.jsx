@@ -1,5 +1,4 @@
-
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 function useFetchVenues() {
   const [venues, setVenues] = useState([]);
@@ -9,9 +8,11 @@ function useFetchVenues() {
   useEffect(() => {
     const fetchVenues = async () => {
       try {
-        const response = await fetch('https://v2.api.noroff.dev/holidaze/venues');
+        const response = await fetch(
+          "https://v2.api.noroff.dev/holidaze/venues"
+        );
         if (!response.ok) {
-          throw new Error('Error fetching venues');
+          throw new Error("Error fetching venues");
         }
         const data = await response.json();
         setVenues(data.data);

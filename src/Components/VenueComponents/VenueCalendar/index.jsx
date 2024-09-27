@@ -1,10 +1,9 @@
-import Calendar from 'react-calendar';
+import Calendar from "react-calendar";
 
 function VenueCalendar({ bookedDates }) {
   const isDateBooked = (date) => {
     return bookedDates.some(
-      (booking) =>
-        date >= booking.start && date <= booking.end
+      (booking) => date >= booking.start && date <= booking.end
     );
   };
 

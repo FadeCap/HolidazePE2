@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AuthPage() {
-  const [form, setForm] = useState({ email: '', password: '' });
-  const [isLogin, setIsLogin] = useState(true); 
-  const [message, setMessage] = useState('');
+  const [form, setForm] = useState({ email: "", password: "" });
+  const [isLogin, setIsLogin] = useState(true);
+  const [message, setMessage] = useState("");
   const navigate = useNavigate(); // Redirect after login/register
 
   const handleChange = (e) => {
@@ -13,50 +13,58 @@ function AuthPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    const endpoint = isLogin 
-      ? 'https://v2.api.noroff.dev/auth/login?_holidaze=true' 
-      : 'https://v2.api.noroff.dev/auth/register';
-      
+
+    const endpoint = isLogin
+      ? "https://v2.api.noroff.dev/auth/login?_holidaze=true"
+      : "https://v2.api.noroff.dev/auth/register";
+
     try {
       const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      
+
       const data = await response.json();
-      
+
       if (response.ok && data.data?.accessToken) {
         // Store accessToken in local storage
-        localStorage.setItem('accessToken', data.data.accessToken);
-        localStorage.setItem('user', JSON.stringify(data.data)); 
+        localStorage.setItem("accessToken", data.data.accessToken);
+        localStorage.setItem("user", JSON.stringify(data.data));
 
         // Show success message and redirect
-        setMessage(isLogin ? 'You are now logged in' : 'Thank you for registering!');
+        setMessage(
+          isLogin ? "You are now logged in" : "Thank you for registering!"
+        );
         setTimeout(() => {
-          navigate(isLogin ? '/profile' : '/auth'); // Redirect after login/register
+          navigate(isLogin ? "/profile" : "/auth"); // Redirect after login/register
         }, 2000);
       } else {
         // Handle error
-        setMessage(isLogin ? 'Login failed. Please try again.' : 'Registration failed. Please try again.');
+        setMessage(
+          isLogin
+            ? "Login failed. Please try again."
+            : "Registration failed. Please try again."
+        );
       }
     } catch (error) {
-      console.error('Error:', error);
-      setMessage('An error occurred.');
+      console.error("Error:", error);
+      setMessage("An error occurred.");
     }
   };
 
   // Toggle between login and register
   const toggleAuthMode = () => {
     setIsLogin(!isLogin);
-    setForm({ email: '', password: '' }); // Reset form on toggle
-    setMessage(''); // Clear message
+    setForm({ email: "", password: "" }); // Reset form on toggle
+    setMessage(""); // Clear message
   };
 
   return (
     <div className="container mx-auto p-4 max-w-md">
-      <h1 className="text-2xl font-bold mb-4">{isLogin ? 'Login' : 'Register'}</h1>
+      <h1 className="text-2xl font-bold mb-4">
+        {isLogin ? "Login" : "Register"}
+      </h1>
       {message && <div className="mb-4 text-green-600">{message}</div>}
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
@@ -101,7 +109,7 @@ function AuthPage() {
               <input
                 type="text"
                 name="bio"
-                value={form.bio || ''}
+                value={form.bio || ""}
                 onChange={handleChange}
                 className="w-full border px-3 py-2 rounded"
               />
@@ -113,7 +121,7 @@ function AuthPage() {
           type="submit"
           className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
         >
-          {isLogin ? 'Login' : 'Register'}
+          {isLogin ? "Login" : "Register"}
         </button>
       </form>
 
@@ -124,7 +132,9 @@ function AuthPage() {
           onClick={toggleAuthMode}
           className="text-blue-500 hover:underline"
         >
-          {isLogin ? 'Need an account? Register' : 'Already have an account? Login'}
+          {isLogin
+            ? "Need an account? Register"
+            : "Already have an account? Login"}
         </button>
       </div>
     </div>

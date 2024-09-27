@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import VenueCard from  '../../Components/VenueComponents/VenueCard';
-import useFetchVenues from '../../hooks/useFetchVenues';
-import SearchBar from '../../Components/SearchBar';
+import React, { useState } from "react";
+import VenueCard from "../../Components/VenueComponents/VenueCard";
+import useFetchVenues from "../../hooks/useFetchVenues";
+import SearchBar from "../../Components/SearchBar";
 
 function HomePage() {
   const { venues, loading, error } = useFetchVenues();
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
 
   // Filter venues by the search query
   const filteredVenues = venues.filter((venue) =>

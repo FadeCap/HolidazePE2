@@ -1,5 +1,5 @@
 // src/components/ProfileModal.jsx
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function ProfileModal({ isOpen, onClose, userData, onUpdate }) {
   const [bio, setBio] = useState(userData.bio);

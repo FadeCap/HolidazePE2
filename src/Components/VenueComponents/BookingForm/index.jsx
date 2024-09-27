@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import Calendar from 'react-calendar';
-import axios from 'axios';
+import { useState } from "react";
+import Calendar from "react-calendar";
+import axios from "axios";
 
 function BookingForm({ venueId, maxGuests, bookedDates }) {
   const [dates, setDates] = useState(null); // Dates from calendar
@@ -35,18 +35,22 @@ function BookingForm({ venueId, maxGuests, bookedDates }) {
     try {
       setIsSubmitting(true);
 
-      const response = await axios.post('https://v2.api.noroff.dev/holidaze/bookings', bookingData, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-          "X-Noroff-API-Key": import.meta.env.VITE_API_KEY, 
-        },
-      });
+      const response = await axios.post(
+        "https://v2.api.noroff.dev/holidaze/bookings",
+        bookingData,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            "X-Noroff-API-Key": import.meta.env.VITE_API_KEY,
+          },
+        }
+      );
 
       console.log(response.data);
-      alert('Booking successful!');
+      alert("Booking successful!");
     } catch (error) {
-      console.error('Booking failed:', error);
-      alert('Error while booking. Please try again.');
+      console.error("Booking failed:", error);
+      alert("Error while booking. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -58,17 +62,21 @@ function BookingForm({ venueId, maxGuests, bookedDates }) {
       <Calendar
         selectRange={true}
         onChange={handleDateChange}
-        tileDisabled={({ date }) => 
+        tileDisabled={({ date }) =>
           bookedDates.some(
-            (booking) =>
-              date >= booking.start && date <= booking.end
+            (booking) => date >= booking.start && date <= booking.end
           )
         }
       />
 
       {/* Guests input */}
       <div className="mt-4">
-        <label htmlFor="guests" className="block text-sm font-medium text-gray-700">Number of Guests</label>
+        <label
+          htmlFor="guests"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Number of Guests
+        </label>
         <input
           type="number"
           id="guests"
@@ -81,14 +89,16 @@ function BookingForm({ venueId, maxGuests, bookedDates }) {
       </div>
 
       {/* Book Now Button */}
-      <div className='flex justify-center p-4'>
-      <button
-        onClick={handleBooking}
-        disabled={isSubmitting}
-        className={`mt-4 bg-blue-600 text-white py-2 px-4 rounded ${isSubmitting ? 'opacity-50' : 'hover:bg-blue-700'}`}
-      >
-        {isSubmitting ? 'Booking...' : 'Book Now'}
-      </button>
+      <div className="flex justify-center p-4">
+        <button
+          onClick={handleBooking}
+          disabled={isSubmitting}
+          className={`mt-4 bg-blue-600 text-white py-2 px-4 rounded ${
+            isSubmitting ? "opacity-50" : "hover:bg-blue-700"
+          }`}
+        >
+          {isSubmitting ? "Booking..." : "Book Now"}
+        </button>
       </div>
     </div>
   );

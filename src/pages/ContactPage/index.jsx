@@ -1,21 +1,21 @@
 // src/pages/ContactPage.jsx
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function ContactPage() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     // Implement your actual contact form submission logic here
-    console.log('Contact Form Submitted:', form);
+    console.log("Contact Form Submitted:", form);
     setSubmitted(true);
     // Reset form
-    setForm({ name: '', email: '', message: '' });
+    setForm({ name: "", email: "", message: "" });
   };
 
   if (submitted) {

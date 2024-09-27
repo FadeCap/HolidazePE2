@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import VenueCarousel from '../../Components/VenueComponents/VenueCarousel';
-import VenueDetails from '../../Components/VenueComponents/VenueDetails';
-import VenueLocation from '../../Components/VenueComponents/VenueLocation';
-import VenueDates from '../../Components/VenueComponents/VenueDates';
-import AmenitiesList from '../../Components/VenueComponents/Amenities/AmenityList';
-import BookingForm from '../../Components/VenueComponents/BookingForm';
-import 'react-calendar/dist/Calendar.css';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import VenueCarousel from "../../Components/VenueComponents/VenueCarousel";
+import VenueDetails from "../../Components/VenueComponents/VenueDetails";
+import VenueLocation from "../../Components/VenueComponents/VenueLocation";
+import VenueDates from "../../Components/VenueComponents/VenueDates";
+import AmenitiesList from "../../Components/VenueComponents/Amenities/AmenityList";
+import BookingForm from "../../Components/VenueComponents/BookingForm";
+import "react-calendar/dist/Calendar.css";
 
 function SpecificVenuePage() {
   const { id } = useParams();
@@ -18,7 +18,7 @@ function SpecificVenuePage() {
     fetch(`https://v2.api.noroff.dev/holidaze/venues/${id}?_bookings=true`)
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Venue not found');
+          throw new Error("Venue not found");
         }
         return response.json();
       })
@@ -32,7 +32,7 @@ function SpecificVenuePage() {
         setBookedDates(dates);
       })
       .catch((error) => {
-        console.error('Error fetching venue:', error);
+        console.error("Error fetching venue:", error);
         setLoading(false);
       });
   }, [id]);
@@ -80,7 +80,11 @@ function SpecificVenuePage() {
         <div className="w-full md:w-1/3 mb-4 border-lg p-4">
           <div className="bg-white shadow-md rounded-lg p-4">
             <h2 className="text-xl font-semibold mb-4">Book Now</h2>
-            <BookingForm venueId={venue.id} maxGuests={venue.maxGuests} bookedDates={bookedDates} />
+            <BookingForm
+              venueId={venue.id}
+              maxGuests={venue.maxGuests}
+              bookedDates={bookedDates}
+            />
           </div>
         </div>
       </div>

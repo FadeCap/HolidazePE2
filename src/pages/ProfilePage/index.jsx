@@ -104,7 +104,6 @@ function ProfilePage() {
         <div className="w-1/3">
           <UserBookings username={user.name} />
         </div>
-
       </div>
     </div>
   );
