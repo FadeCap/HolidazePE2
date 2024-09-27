@@ -24,7 +24,7 @@ function BookingForm({ venueId, maxGuests, bookedDates }) {
       return;
     }
 
-    const [dateFrom, dateTo] = dates; // Start and end date from calendar selection
+    const [dateFrom, dateTo] = dates;
     const bookingData = {
       dateFrom: dateFrom.toISOString(),
       dateTo: dateTo.toISOString(),

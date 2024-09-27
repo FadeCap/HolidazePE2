@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function AuthPage() {
@@ -13,32 +13,40 @@ function AuthPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const endpoint = isLogin
       ? "https://v2.api.noroff.dev/auth/login?_holidaze=true"
       : "https://v2.api.noroff.dev/auth/register";
-
+  
     try {
       const response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-
+  
       const data = await response.json();
-
-      if (response.ok && data.data?.accessToken) {
-        // Store accessToken in local storage
-        localStorage.setItem("accessToken", data.data.accessToken);
-        localStorage.setItem("user", JSON.stringify(data.data));
-
-        // Show success message and redirect
-        setMessage(
-          isLogin ? "You are now logged in" : "Thank you for registering!"
-        );
-        setTimeout(() => {
-          navigate(isLogin ? "/profile" : "/auth"); // Redirect after login/register
-        }, 2000);
+  
+      if (response.ok) {
+        if (isLogin && data.data?.accessToken) {
+          // Store accessToken in local storage
+          localStorage.setItem("accessToken", data.data.accessToken);
+          localStorage.setItem("user", JSON.stringify(data.data));
+  
+          // Show success message and redirect to profile
+          setMessage("You are now logged in");
+          setTimeout(() => {
+            navigate("/profile");
+          }, 2000);
+        } else if (!isLogin) {
+          // Registration was successful
+          setMessage("Thank you for registering!");
+          
+          // Switch to login mode after registration
+          setTimeout(() => {
+            toggleAuthMode(); // Switch to login mode
+          }, 2000);
+        }
       } else {
         // Handle error
         setMessage(
