@@ -1,6 +1,7 @@
 // src/pages/VenueManagerPage.jsx
 import React, { useState } from "react";
 import AddVenue from "../../Components/VenueManagerActions/AddVenue";
+import VenueOwnerList from "../../Components/VenueManagerActions/VenueOwnerList";
 
 const VenueManagerPage = ({ user }) => {
   const [isAddVenueOpen, setAddVenueOpen] = useState(false);
@@ -23,7 +24,7 @@ const VenueManagerPage = ({ user }) => {
       <AddVenue isOpen={isAddVenueOpen} onClose={toggleAddVenueModal} />
 
      
-      {/* You can add more components or functionality here, like listing venues */}
+      <VenueOwnerList />
     </div>
   );
 };
