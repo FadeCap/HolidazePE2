@@ -40,6 +40,7 @@ function HomePage() {
     <div className="container mx-auto p-4">
       <SearchBar onSearch={handleSearch} />
 
+
       {/* Venues Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
         {filteredVenues.map((venue) => (

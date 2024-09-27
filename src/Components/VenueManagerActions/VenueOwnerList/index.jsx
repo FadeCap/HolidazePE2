@@ -118,7 +118,7 @@ const VenueOwnerList = () => {
                   ))}
                 </div>
               ) : (
-                <p>No bookings available for this venue.</p>
+                <p>No bookings found for this venue.</p>
               )}
 
               <div className="flex flex-col gap-4">
