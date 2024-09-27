@@ -22,6 +22,7 @@ const VenueBookings = ({ venueId }) => {
           }
         );
         setBookings(response.data.data.bookings);
+        console.log(response.data.data.bookings);
       } catch (error) {
         console.error("Error fetching bookings:", error);
         setError("Error fetching bookings");

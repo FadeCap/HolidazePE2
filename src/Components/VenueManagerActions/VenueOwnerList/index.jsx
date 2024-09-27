@@ -8,14 +8,13 @@ const VenueOwnerList = () => {
   const [venues, setVenues] = useState([]);
   const [error, setError] = useState(null);
   const [selectedVenue, setSelectedVenue] = useState(null);
-  const [bookings, setBookings] = useState({}); // State for bookings
   const username = JSON.parse(localStorage.getItem("user")).name;
 
   useEffect(() => {
     const fetchVenues = async () => {
       try {
         const response = await axios.get(
-          "https://v2.api.noroff.dev/holidaze/venues?_owner=true&_bookings=true", // Include _bookings=true
+          "https://v2.api.noroff.dev/holidaze/venues?_owner=true&_bookings=true", // Fetch venues with booking data
           {
             headers: {
               "X-Noroff-API-Key": apiKey,
@@ -28,23 +27,6 @@ const VenueOwnerList = () => {
             (venue) => venue.owner.name === username
           );
           setVenues(userVenues);
-
-          // Fetch bookings for each venue
-          const bookingsData = {};
-          await Promise.all(
-            userVenues.map(async (venue) => {
-              const bookingsResponse = await axios.get(
-                `https://v2.api.noroff.dev/holidaze/venues/${venue.id}?_bookings=true`,
-                {
-                  headers: {
-                    "X-Noroff-API-Key": apiKey,
-                  },
-                }
-              );
-              bookingsData[venue.id] = bookingsResponse.data.bookings || [];
-            })
-          );
-          setBookings(bookingsData);
         } else {
           setError("Unexpected response structure");
         }
@@ -137,20 +119,22 @@ const VenueOwnerList = () => {
               </div>
 
               {/* Show bookings for this venue */}
-              {bookings[venue.id] && bookings[venue.id].length > 0 && (
-                <div className="mt-4">
+              {venue.bookings && venue.bookings.length > 0 ? (
+                <div className="mt-4 w-1/3">
                   <h4 className="font-semibold">Bookings:</h4>
-                  {bookings[venue.id].map((booking) => (
+                  {venue.bookings.map((booking) => (
                     <div key={booking.id} className="border-t mt-2 pt-2">
-                      <p>Booking ID: {booking.id}</p>
                       <p>Guests: {booking.guests}</p>
-                      <p>
-                        Dates: {new Date(booking.dateFrom).toLocaleDateString()} to{" "}
-                        {new Date(booking.dateTo).toLocaleDateString()}
+                      <p>Customer: {booking.customer.name} <p/>
+                      <p>Email: {booking.customer.email}</p>
+                        Dates: {new Date(booking.dateFrom).toLocaleDateString()}{" "}
+                        to {new Date(booking.dateTo).toLocaleDateString()}
                       </p>
                     </div>
                   ))}
                 </div>
+              ) : (
+                <p>No bookings available for this venue.</p>
               )}
             </li>
           ))}
