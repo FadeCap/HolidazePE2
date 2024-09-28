@@ -38,29 +38,30 @@ Make sure you have the following installed:
 
 2. Install dependencies:
 
-    ```bash
-  npm install
+   ```bash
+   npm install
 
 3. Set up enviroment variables:
 
-    ```bash
-  VITE_API_KEY=your_api_key_here
+   ```bash
+   VITE_API_KEY=your_api_key_here
 
 
 ### Running the Application
 
 1. Start the development server:
 
-    ```bash
-  npm run dev
+   ```bash
+   npm run dev
 
 2. Open your browser and navigate to http://localhost:5173 (or the port displayed in your terminal).
 
 ### Building for Production
 
-  To create a production build of the application, run: 
+1. To create a production build of the application, run: 
 
-    ```bash
-  npm run build
+   ```bash
+   npm run build
 
-The built files is now available in the "dist" folder
+
+2. The built files is now available in the "dist" folder
