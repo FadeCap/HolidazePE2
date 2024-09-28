@@ -56,7 +56,7 @@ function VenueCard({ venue }) {
       </div>
 
       {/* Venue Description */}
-      <p className="mt-2 text-gray-700 p-4">{venue.description}</p>
+      <p className="mt-2 text-gray-700 p-4 overflow-hidden">{venue.description}</p>
 
       <div className="flex justify-center pt-4 pb-4 m-4">
         <Link

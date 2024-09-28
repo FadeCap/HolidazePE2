@@ -14,7 +14,7 @@ const VenueOwnerList = () => {
     const fetchVenues = async () => {
       try {
         const response = await axios.get(
-          "https://v2.api.noroff.dev/holidaze/venues?_owner=true&_bookings=true", // Fetch venues with booking data
+          "https://v2.api.noroff.dev/holidaze/venues?_owner=true&_bookings=true",
           {
             headers: {
               "X-Noroff-API-Key": apiKey,
@@ -85,25 +85,26 @@ const VenueOwnerList = () => {
           {venues.map((venue) => (
             <li
               key={venue.id}
-              className="mb-2 p-4 border rounded-lg flex justify-between"
+              className="mb-4 p-4 border rounded-lg flex flex-col sm:flex-row gap-4"
             >
-              <div className="w-1/3">
+              {/* Venue Details */}
+              <div className="sm:w-1/2">
                 <h3 className="text-xl font-bold">{venue.name}</h3>
                 <p>{venue.description}</p>
                 {venue.media && venue.media.length > 0 ? (
                   <img
                     src={venue.media[0].url}
                     alt={venue.media[0].alt || "Venue Image"}
-                    className="w-36 h-36 object-cover mt-2 rounded-lg"
+                    className="w-full h-36 object-cover mt-2 rounded-lg"
                   />
                 ) : (
                   <p>No image available for this venue.</p>
                 )}
               </div>
 
-              {/* Show bookings for this venue */}
+              {/* Venue Bookings */}
               {venue.bookings && venue.bookings.length > 0 ? (
-                <div className="mt-4 w-1/3">
+                <div className="sm:w-1/2">
                   <h4 className="font-semibold">Bookings:</h4>
                   {venue.bookings.map((booking) => (
                     <div key={booking.id} className="border-t mt-2 pt-2">
@@ -121,18 +122,16 @@ const VenueOwnerList = () => {
                 <p>No bookings found for this venue.</p>
               )}
 
-              <div className="flex flex-col gap-4">
-                {/* Update Venue Button */}
+              {/* Action Buttons */}
+              <div className="flex sm:flex-col gap-4">
                 <button
-                  className="bg-blue-700 text-white py-1 px-4 mt-2 rounded font-bold"
+                  className="bg-blue-700 text-white py-1 px-4 rounded font-bold"
                   onClick={() => openUpdateModal(venue)}
                 >
                   Update
                 </button>
-
-                {/* Delete Venue Button */}
                 <button
-                  className="bg-red-700 text-white py-1 px-4 mt-2 ml-2 rounded"
+                  className="bg-red-700 text-white py-1 px-4 rounded"
                   onClick={() => handleDeleteVenue(venue.id)}
                 >
                   Delete

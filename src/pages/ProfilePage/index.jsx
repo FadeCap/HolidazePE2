@@ -77,32 +77,29 @@ function ProfilePage() {
         />
       </div>
 
-      <div className="flex justify-between items-center ml-4 mt-4 p-4">
-        <h1 className="text-2xl font-bold truncate max-w-[70%]">{user.name}</h1>
-        <div>
+      {/* Adjust spacing and stacking on mobile */}
+      <div className="flex flex-col sm:flex-row justify-between items-center ml-4 mt-4 p-4 space-y-2 sm:space-y-0">
+        <h1 className="text-2xl font-bold truncate max-w-full sm:max-w-[70%]">{user.name}</h1>
+        <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
           <button
             onClick={() => setIsModalOpen(true)}
-            className="bg-gray-600 text-white py-2 px-4 rounded mr-2"
+            className="bg-gray-600 text-white py-2 px-4 rounded"
           >
             Settings
           </button>
           {user.venueManager && (
             <button
               onClick={handleManageVenues}
-              className="bg-green-700 text-white py-2 px-4 rounded mb-4"
+              className="bg-green-700 text-white py-2 px-4 rounded"
             >
               Manage Your Venues
             </button>
           )}
-        </div>
-        <div>
           <LogoutButton />
         </div>
       </div>
 
-      <p className="text-gray-600 m-4 pl-4 pb-4">
-        {user.bio || "No bio available"}
-      </p>
+      <p className="text-gray-600 m-4 pl-4 pb-4">{user.bio || "No bio available"}</p>
 
       <ProfileModal
         isOpen={isModalOpen}
@@ -111,8 +108,9 @@ function ProfilePage() {
         onUpdate={handleUpdate}
       />
 
-      <div className="flex p-4">
-        <div className="w-1/3">
+      {/* Make the booking section more responsive */}
+      <div className="flex flex-col sm:flex-row p-4">
+        <div className="w-full sm:w-1/3">
           <UserBookings username={user.name} />
         </div>
       </div>
