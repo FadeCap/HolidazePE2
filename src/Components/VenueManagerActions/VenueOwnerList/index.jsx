@@ -124,7 +124,7 @@ const VenueOwnerList = () => {
               <div className="flex flex-col gap-4">
                 {/* Update Venue Button */}
                 <button
-                  className="bg-yellow-500 text-white py-1 px-4 mt-2 rounded"
+                  className="bg-blue-700 text-white py-1 px-4 mt-2 rounded font-bold"
                   onClick={() => openUpdateModal(venue)}
                 >
                   Update
@@ -132,7 +132,7 @@ const VenueOwnerList = () => {
 
                 {/* Delete Venue Button */}
                 <button
-                  className="bg-red-500 text-white py-1 px-4 mt-2 ml-2 rounded"
+                  className="bg-red-700 text-white py-1 px-4 mt-2 ml-2 rounded"
                   onClick={() => handleDeleteVenue(venue.id)}
                 >
                   Delete

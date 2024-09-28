@@ -1,5 +1,6 @@
 import Calendar from "react-calendar";
 
+
 function VenueCalendar({ bookedDates }) {
   const isDateBooked = (date) => {
     return bookedDates.some(

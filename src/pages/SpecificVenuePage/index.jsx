@@ -6,6 +6,7 @@ import VenueLocation from "../../Components/VenueComponents/VenueLocation";
 import VenueDates from "../../Components/VenueComponents/VenueDates";
 import AmenitiesList from "../../Components/VenueComponents/Amenities/AmenityList";
 import BookingForm from "../../Components/VenueComponents/BookingForm";
+import BackButton from "../../Components/BackButton";
 import "react-calendar/dist/Calendar.css";
 
 function SpecificVenuePage() {
@@ -45,7 +46,6 @@ function SpecificVenuePage() {
     return <div className="text-center mt-10">Venue not found.</div>;
   }
 
-  // Transform meta object into an array for AmenitiesList
   const amenities = Object.keys(venue.meta).map((key) => ({
     name: key,
     available: venue.meta[key],
@@ -53,6 +53,10 @@ function SpecificVenuePage() {
 
   return (
     <div className="container mx-auto p-4">
+      <div className="mb-4">
+        <BackButton to="/" label="< Back" />
+      </div>
+
       {/* Image Carousel */}
       <VenueCarousel images={venue.media} />
 

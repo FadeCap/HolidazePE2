@@ -1,6 +1,5 @@
-// src/pages/ProfilePage.jsx
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import ProfileModal from "../../Components/ProfileModal";
 import UserBookings from "../../Components/UserBookings";
 import axios from "axios";
@@ -11,12 +10,18 @@ const apiKey = import.meta.env.VITE_API_KEY;
 function ProfilePage() {
   const [user, setUser] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("user"));
-    setUser(userData);
-  }, []);
+
+    if (userData) {
+      setUser(userData);
+    } else {
+      // Redirect to login if no user is found
+      navigate("/auth");
+    }
+  }, [navigate]);
 
   const handleUpdate = async (updatedData) => {
     const accessToken = localStorage.getItem("accessToken");
@@ -49,7 +54,7 @@ function ProfilePage() {
   };
 
   const handleManageVenues = () => {
-    navigate("/venue-manager"); // Navigate to the VenueManagerPage
+    navigate("/venue-manager");
   };
 
   if (!user) return <div>Loading...</div>;
@@ -59,11 +64,15 @@ function ProfilePage() {
       <div className="relative overflow-hidden">
         <div
           className="bg-cover bg-center h-64 rounded-t-lg"
-          style={{ backgroundImage: `url(${user.banner.url})` }}
+          style={{
+            backgroundImage: `url(${
+              user.banner?.url || "/default-banner.jpg"
+            })`, // Fallback banner
+          }}
         />
         <img
-          src={user.avatar.url}
-          alt={user.avatar.alt}
+          src={user.avatar?.url || "/default-avatar.jpg"} // Fallback avatar
+          alt={user.avatar?.alt || "User Avatar"}
           className="w-24 h-24 rounded-full border-4 border-white absolute bottom-2 left-2"
         />
       </div>
@@ -80,7 +89,7 @@ function ProfilePage() {
           {user.venueManager && (
             <button
               onClick={handleManageVenues}
-              className="bg-green-500 text-white py-2 px-4 rounded mb-4"
+              className="bg-green-700 text-white py-2 px-4 rounded mb-4"
             >
               Manage Your Venues
             </button>
@@ -91,7 +100,9 @@ function ProfilePage() {
         </div>
       </div>
 
-      <p className="text-gray-600 m-4 pl-4 pb-4">{user.bio}</p>
+      <p className="text-gray-600 m-4 pl-4 pb-4">
+        {user.bio || "No bio available"}
+      </p>
 
       <ProfileModal
         isOpen={isModalOpen}

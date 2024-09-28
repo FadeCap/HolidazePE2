@@ -2,9 +2,8 @@ export default function StarRating({ rating, maxRating }) {
   const stars = [];
   for (let i = 1; i <= maxRating; i++) {
     stars.push(
-      <span key={i} className={`text-yellow-400 text-2xl`}>
+      <span key={i} className={`text-yellow-500 text-2xl mr-1 font-bold`}>
         {" "}
-        {/* Adjust the size here */}
         {i <= rating ? "★" : "☆"}
       </span>
     );
