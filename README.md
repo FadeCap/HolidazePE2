@@ -65,3 +65,11 @@ Make sure you have the following installed:
 
 
 2. The built files is now available in the "dist" folder
+
+### Registering and gaining Authorization
+
+1. Register with an email ending in "@stud.noroff.no"
+
+2. Log in with the user you created. 
+
+3. If you want to become a venue manager, please go to the profile page, and click the "Settings" button, there is a checkmark for becoming a venue manager. 
