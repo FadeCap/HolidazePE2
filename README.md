@@ -1,4 +1,4 @@
-# Booking Website
+# Holidaze Project Exam 2
 
 ## Overview
 
