@@ -1,8 +1,67 @@
-# React + Vite
+# Holidaze Project Exam 2
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This project is a booking website that allows users to search for venues, manage their profiles, and handle venue bookings. The website is built using React, Tailwind CSS, and utilizes a RESTful API for data management.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+
+- User authentication (login/register)
+- Profile management
+- Venue management for venue owners
+- Booking system
+- Responsive design for mobile and desktop views
+
+## Technologies Used
+
+- **Frontend:** React, Tailwind CSS
+- **State Management:** React Hooks
+- **API Integration:** Axios
+- **Routing:** React Router
+- **Deployment:** GitHub Pages
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/en/download/) (v14 or later)
+- [npm](https://www.npmjs.com/get-npm) (comes with Node.js)
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/FadeCap/HolidazePE2
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+
+3. Set up enviroment variables:
+
+   ```bash
+   VITE_API_KEY=your_api_key_here
+
+
+### Running the Application
+
+1. Start the development server:
+
+   ```bash
+   npm run dev
+
+2. Open your browser and navigate to http://localhost:5173 (or the port displayed in your terminal).
+
+### Building for Production
+
+1. To create a production build of the application, run: 
+
+   ```bash
+   npm run build
+
+
+2. The built files is now available in the "dist" folder
