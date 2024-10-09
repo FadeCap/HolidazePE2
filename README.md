@@ -75,4 +75,9 @@ Make sure you have the following installed:
 
 2. Log in with the user you created. 
 
-3. If you want to become a venue manager, please go to the profile page, and click the "Settings" button, there is a checkmark for becoming a venue manager. 
+3. If you want to become a venue manager, please go to the profile page, and click the "Settings" button, there is a checkmark for becoming a venue manager.
+
+
+## Contact
+
+[My LinkedIn page](https://www.linkedin.com/in/stian-busengdal/)
