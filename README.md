@@ -1,6 +1,9 @@
 # Holidaze Project Exam 2
 
-## Overview
+![Holidaze-desktop](https://github.com/user-attachments/assets/d54064e2-8878-4ecb-a1d5-911dbc364341)
+
+
+## Description
 
 This project is a booking website that allows users to search for venues, manage their profiles, and handle venue bookings. The website is built using React, Tailwind CSS, and utilizes a RESTful API for data management.
 
@@ -12,13 +15,13 @@ This project is a booking website that allows users to search for venues, manage
 - Booking system
 - Responsive design for mobile and desktop views
 
-## Technologies Used
+## Built with
 
-- **Frontend:** React, Tailwind CSS
+- **Frontend:** [React.js](https://reactjs.org), [TailwindCSS](https://tailwindcss.com/)
 - **State Management:** React Hooks
 - **API Integration:** Axios
 - **Routing:** React Router
-- **Deployment:** GitHub Pages
+- **Deployment:** [Github Pages](https://pages.github.com/)
 
 ## Getting Started
 
