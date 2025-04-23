@@ -2,7 +2,6 @@
 
 ![Holidaze-desktop](https://github.com/user-attachments/assets/d54064e2-8878-4ecb-a1d5-911dbc364341)
 
-
 ## Description
 
 This project is a booking website that allows users to search for venues, manage their profiles, and handle venue bookings. The website is built using React, Tailwind CSS, and utilizes a RESTful API for data management.
@@ -39,16 +38,20 @@ Make sure you have the following installed:
    ```bash
    git clone https://github.com/FadeCap/HolidazePE2
 
+   ```
+
 2. Install dependencies:
 
    ```bash
    npm install
 
+   ```
+
 3. Set up enviroment variables:
 
    ```bash
    VITE_API_KEY=your_api_key_here
-
+   ```
 
 ### Running the Application
 
@@ -57,15 +60,18 @@ Make sure you have the following installed:
    ```bash
    npm run dev
 
+   ```
+
 2. Open your browser and navigate to http://localhost:5173 (or the port displayed in your terminal).
 
 ### Building for Production
 
-1. To create a production build of the application, run: 
+1. To create a production build of the application, run:
 
    ```bash
    npm run build
 
+   ```
 
 2. The built files is now available in the "dist" folder
 
@@ -73,10 +79,9 @@ Make sure you have the following installed:
 
 1. Register with an email ending in "@stud.noroff.no"
 
-2. Log in with the user you created. 
+2. Log in with the user you created.
 
 3. If you want to become a venue manager, please go to the profile page, and click the "Settings" button, there is a checkmark for becoming a venue manager.
-
 
 ## Contact
 
