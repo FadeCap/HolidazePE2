@@ -13,9 +13,13 @@ const useFetchVenues = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `https://v2.api.noroff.dev/holidaze/venues?_page=${page}&_limit=10`
+          `https://v2.api.noroff.dev/holidaze/venues?_page=${page}&_limit=10`,
         );
-        setVenues((prevVenues) => [...prevVenues, ...response.data.data]);
+        setVenues((prevVenues) =>
+          [...prevVenues, ...response.data.data].sort((a, b) =>
+            a.name.localeCompare(b.name),
+          ),
+        );
         setHasMore(response.data.data.length > 0); // Check if more venues are available
       } catch (err) {
         setError("Failed to load venues");
