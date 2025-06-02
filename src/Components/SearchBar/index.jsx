@@ -1,13 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function SearchBar({ onSearch }) {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("Villa ");
 
   const handleInputChange = (event) => {
     const value = event.target.value;
     setQuery(value);
     onSearch(value);
   };
+
+  // Trigger search on initial load
+  useEffect(() => {
+    onSearch(query);
+  }, []); // Empty dependency array = runs once when mounted
 
   return (
     <div className="flex justify-center items-center m-3 p-3">
