@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import VenueCard from "../../Components/VenueComponents/VenueCard";
 import useFetchVenues from "../../hooks/useFetchVenues";
 import SearchBar from "../../Components/SearchBar";
+import Hero from "../../Components/Hero";
 
 function HomePage() {
   const { venues, loading, error } = useFetchVenues();
@@ -9,7 +10,7 @@ function HomePage() {
 
   // Remove duplicate venues using a Map for efficiency
   const uniqueVenues = Array.from(
-    new Map(venues.map((venue) => [venue.id, venue])).values()
+    new Map(venues.map((venue) => [venue.id, venue])).values(),
   );
 
   // Filter venues by the search query (name, description, or location)
@@ -38,9 +39,9 @@ function HomePage() {
 
   return (
     <div className="container mx-auto p-4">
-      <SearchBar onSearch={handleSearch} />
-
-
+      <Hero>
+        <SearchBar onSearch={handleSearch} />
+      </Hero>
       {/* Venues Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
         {filteredVenues.map((venue) => (
