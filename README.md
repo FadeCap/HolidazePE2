@@ -20,7 +20,7 @@ This project is a booking website that allows users to search for venues, manage
 - **State Management:** React Hooks
 - **API Integration:** Axios
 - **Routing:** React Router
-- **Deployment:** [Github Pages](https://pages.github.com/)
+- **Deployment:** [Netlify - Holidaze](https://holidazestianlb.netlify.app/)
 
 ## Getting Started
 
@@ -85,4 +85,4 @@ Make sure you have the following installed:
 
 ## Contact
 
-[My LinkedIn page](https://www.linkedin.com/in/stian-busengdal/)
+E-mail: stianlb@pm.me
